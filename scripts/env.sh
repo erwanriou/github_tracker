@@ -6,14 +6,12 @@ if
 then
   echo "config/keys_dev.js does not exists yet --> Creating..."
   # INPUT ENVS
-  echo -n "::Enter PIPELINE_ENV and press [ENTER]: "
-  read PIPELINE_ENV
   echo -n "::Enter MONGO_URI and press [ENTER]: "
   read MONGO_URI
 
   echo "const keys = {
     pipeline: {
-      env: \"$PIPELINE_ENV\"
+      env: \"LOCAL\"
     },
     mongo: {
       url: \"$MONGO_URI\"
