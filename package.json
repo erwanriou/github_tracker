@@ -1,0 +1,20 @@
+{
+  "name": "github_tracker",
+  "version": "1.0.0",
+  "description": "Fullstack test with github API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erwanriou/github_tracker.git"
+  },
+  "keywords": [],
+  "author": "Erwan Riou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erwanriou/github_tracker/issues"
+  },
+  "homepage": "https://github.com/erwanriou/github_tracker#readme"
+}
