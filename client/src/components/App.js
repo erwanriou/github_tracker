@@ -8,6 +8,7 @@ import { defaultStyles } from "../styles/common/default.styles.js"
 // IMPORT COMPONENTS
 import Header from "./layout/Header"
 import Footer from "./layout/Footer"
+import Router from "./Router"
 
 const App = () => {
   // LOAD DEFAULT STYLES
@@ -17,7 +18,7 @@ const App = () => {
   return (
     <JssProvider classNamePrefix="github_tracker">
       <Header />
-      <div>HELLO WORLD</div>
+      <Router />
       <Footer />
     </JssProvider>
   )
