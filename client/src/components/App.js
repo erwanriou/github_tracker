@@ -1,7 +1,26 @@
 import React from "react"
+import { withRouter } from "react-router-dom"
+
+// IMPORT STYLES
+import { JssProvider } from "react-jss"
+import { fonts } from "../styles/common/fonts.styles.js"
+import { defaultStyles } from "../styles/common/default.styles.js"
+// IMPORT COMPONENTS
+import Header from "./layout/Header"
+import Footer from "./layout/Footer"
 
 const App = () => {
-  return <div>HELLO WORLD</div>
+  // LOAD DEFAULT STYLES
+  defaultStyles()
+  fonts()
+
+  return (
+    <JssProvider classNamePrefix="github_tracker">
+      <Header />
+      <div>HELLO WORLD</div>
+      <Footer />
+    </JssProvider>
+  )
 }
 
-export default App
+export default withRouter(App)
