@@ -11,7 +11,6 @@ const routes = require("./routes")
 const app = express()
 
 // USE MAIN MIDDLWWARE
-app.set("trust proxy", true)
 app.use(helmet())
 app.disable("x-powered-by")
 app.use(bodyParser.urlencoded({ extended: false }))

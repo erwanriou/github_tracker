@@ -27,4 +27,4 @@ npm run dev
 
 ## Production Deploy
 
-I made a quick production deploy in a free heroku instancy just in case. Feel free to visit this adress.
+I made a quick production deploy in a free heroku instancy just in case. Feel free to visit this adress `https://github-tracker-app.herokuapp.com/`
