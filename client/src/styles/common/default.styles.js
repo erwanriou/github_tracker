@@ -346,7 +346,7 @@ export const defaultStyles = createUseStyles({
       boxShadow: "0 -9px 12px 0 rgba(46, 61, 73, 0.2)",
       bottom: "0",
       height: "2rem",
-      color: "white",
+      color: "black",
       margin: 0,
       padding: 0,
       border: 0,
