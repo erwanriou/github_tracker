@@ -1,7 +1,7 @@
 import { createUseStyles } from "react-jss"
 
 export const useStyles = createUseStyles({
-  userItem: {
+  repositoryItem: {
     position: "relative",
     border: "1px solid #ddd",
     borderRadius: "0.5rem",
@@ -36,11 +36,11 @@ export const useStyles = createUseStyles({
       boxShadow: "0px 5px 25px 0 rgba(46, 61, 73, 0.1)"
     }
   },
-  userItemLink: {
+  repositoryItemLink: {
     display: "flex",
     color: "black"
   },
-  userItemData: {
+  repositorytemData: {
     position: "relative",
     width: "100%",
     right: 0,

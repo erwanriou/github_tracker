@@ -2,19 +2,22 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 // IMPORT STYLES
-const RepositoryItem = ({ user, type, classes }) => {
+const SneakinItem = ({ user, type, classes }) => {
   const handleSave = () => {
     return console.log("SAVE BUTTON")
   }
   const typeSaved = type === "users" ? "user" : "company"
+  // DISSOCIATE ORGS FROM USERS IN URL
+  const url =
+    type === "users"
+      ? `/repositories/users-${user.login}`
+      : `/repositories/orgs-${user.login}`
+
   return (
-    <article className={classes.repositoryItem}>
-      <Link
-        to={`/repositories/${user.login}`}
-        className={classes.repositoryItemLink}
-      >
+    <article className={classes.userItem}>
+      <Link to={url} className={classes.userItemLink}>
         <img src={user.avatar_url} alt={user.name} />
-        <div className={classes.repositoryItemData}>
+        <div className={classes.userItemData}>
           <h3>
             <strong>{user.login}</strong>
           </h3>
@@ -26,4 +29,4 @@ const RepositoryItem = ({ user, type, classes }) => {
   )
 }
 
-export default RepositoryItem
+export default SneakinItem
