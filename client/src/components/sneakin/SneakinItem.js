@@ -6,7 +6,7 @@ const RepositoryItem = ({ repository, type, classes }) => {
   const handleSave = () => {
     return console.log("SAVE BUTTON")
   }
-
+  const typeSaved = type === "users" ? "user" : "company"
   return (
     <article className={classes.repositoryItem}>
       <Link
@@ -21,7 +21,7 @@ const RepositoryItem = ({ repository, type, classes }) => {
           {repository.description && <p>{repository.description}</p>}
         </div>
       </Link>
-      <button onClick={handleSave}>Save Repo</button>
+      <button onClick={handleSave}>Save {typeSaved}</button>
     </article>
   )
 }

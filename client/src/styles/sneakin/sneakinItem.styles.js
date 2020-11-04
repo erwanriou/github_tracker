@@ -20,7 +20,17 @@ export const useStyles = createUseStyles({
       right: "1rem",
       bottom: "1rem",
       zIndex: "2",
-      cursor: "pointer"
+      cursor: "pointer",
+      border: "2px solid #de5858",
+      backgroundColor: "white",
+      color: "#de5858",
+      borderRadius: "0.5rem",
+      padding: "0.5rem 1rem",
+      transition: "all 0.3s ease",
+      "&:hover": {
+        backgroundColor: "#de5858",
+        color: "white"
+      }
     },
     "&:hover": {
       boxShadow: "0px 5px 25px 0 rgba(46, 61, 73, 0.1)"

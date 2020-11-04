@@ -62,6 +62,7 @@ export const useStyles = createUseStyles({
   sneakinList: {
     position: "relative",
     display: "flex",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    margin: "4rem 0"
   }
 })

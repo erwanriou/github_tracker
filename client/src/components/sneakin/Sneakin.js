@@ -9,11 +9,11 @@ import { clearErrors } from "../../store/actions/loadingActions"
 
 // IMPORT COMPONENTS
 import Logo from "../../utils/images/sneaky.png"
-import RepositoriesList from "./RepositoriesList"
+import SneakinList from "./SneakinList"
 import isEmpty from "../../utils/isEmpty"
 
 // IMPORT STYLES
-import { useStyles } from "../../styles/repositories/sneakin.styles.js"
+import { useStyles } from "../../styles/sneakin/sneakin.styles.js"
 import { useCommons } from "../../styles/common/common.styles.js"
 
 const SneakIn = ({ fetchRepositories, clearErrors, repositories, errors }) => {
@@ -76,7 +76,8 @@ const SneakIn = ({ fetchRepositories, clearErrors, repositories, errors }) => {
       </p>
       <section className={classes.sneakinList}>
         {!error && (
-          <RepositoriesList
+          <SneakinList
+            query={query}
             repositories={repositories.repositories}
             type={type.value}
           />
