@@ -3,14 +3,14 @@ import { Link } from "react-router-dom"
 import Timestamp from "react-timestamp"
 
 // IMPORT STYLES
-const RepositoryItem = ({ repository, classes }) => {
+const RepositoryItem = ({ repository, classes, url }) => {
   const handleSave = () => {
     return console.log("SAVE BUTTON")
   }
-
+  const renderUrl = `/repositories/${url}/${repository.name}`
   return (
     <article className={classes.repositoryItem}>
-      <Link to="/lol" className={classes.repositoryItemLink}>
+      <Link to={renderUrl} className={classes.repositoryItemLink}>
         <div className={classes.repositoryItemData}>
           <h3>
             <strong>{repository.name}</strong>

@@ -77,6 +77,7 @@ const Repositories = ({
             query={query}
             repositories={repositories.repositories}
             loading={repositories.loading}
+            url={username}
           />
         )}
       </section>
