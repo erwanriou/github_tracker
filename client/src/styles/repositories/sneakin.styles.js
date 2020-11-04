@@ -31,11 +31,10 @@ export const useStyles = createUseStyles({
   sneakinSearchbar: {
     position: "relative",
     width: "100%",
-    margin: "0 auto",
+    margin: "4rem auto",
     textAlign: "center",
     justifyContent: "center",
     "& input": {
-      marginTop: "4rem",
       padding: "1rem",
       borderRadius: "1rem",
       border: "1px solid #ddd",
@@ -44,6 +43,19 @@ export const useStyles = createUseStyles({
         outline: "none",
         border: "2px solid #de5858"
       }
+    }
+  },
+  seankinToggle: {
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    margin: "0 auto",
+    textAlign: "center",
+    marginBottom: "1rem",
+    "& p": {
+      marginRight: "1rem"
     }
   },
   sneakinList: {

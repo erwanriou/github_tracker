@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { connect } from "react-redux"
+import Switch from "react-switch"
 import classnames from "classnames"
 
 // IMPORT ACTIONS
@@ -13,10 +14,10 @@ import RepositoriesList from "./RepositoriesList"
 import { useStyles } from "../../styles/repositories/sneakin.styles.js"
 import { useCommons } from "../../styles/common/common.styles.js"
 
-const SneakIn = ({ fetchRepositories }) => {
+const SneakIn = ({ fetchRepositories, repositories }) => {
   const classes = { ...useStyles(), ...useCommons() }
   const [query, setQuery] = useState("")
-  const [type, setType] = useState("organization")
+  const [type, setType] = useState({ toggle: false, value: "organizations" })
 
   useEffect(() => {
     fetchRepositories(type)
@@ -25,7 +26,11 @@ const SneakIn = ({ fetchRepositories }) => {
   const handleChange = async e => {
     setQuery(e.target.value)
   }
-
+  const handleToggle = () => {
+    return type.value === "organizations"
+      ? setType({ toggle: true, value: "users" })
+      : setType({ toggle: false, value: "organizations" })
+  }
   return (
     <main className={classnames(classes.container, classes.sneakinContainer)}>
       <section className={classes.sneakinBanner}>
@@ -34,6 +39,20 @@ const SneakIn = ({ fetchRepositories }) => {
         <h2>friends repositories and track what they do gni gni!</h2>
       </section>
       <section className={classes.sneakinSearchbar}>
+        <div className={classes.seankinToggle}>
+          <p>
+            your creepy attention is destined to the{" "}
+            <strong>{type.value}</strong>
+          </p>
+          <Switch
+            onChange={handleToggle}
+            checked={type.toggle}
+            uncheckedIcon={false}
+            checkedIcon={false}
+            onColor="#de5858"
+            offColor="#ddd"
+          />
+        </div>
         <input
           type="text"
           value={query}
@@ -42,7 +61,7 @@ const SneakIn = ({ fetchRepositories }) => {
         />
       </section>
       <section className={classes.sneakinList}>
-        <RepositoriesList />
+        <RepositoriesList repositories={repositories} />
       </section>
     </main>
   )
