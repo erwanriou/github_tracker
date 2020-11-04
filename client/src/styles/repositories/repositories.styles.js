@@ -36,6 +36,7 @@ export const useStyles = createUseStyles({
       borderRadius: "1rem",
       border: "1px solid #ddd",
       width: "20rem",
+      marginRight: "2rem",
       "&:focus": {
         outline: "none",
         border: "2px solid #de5858"

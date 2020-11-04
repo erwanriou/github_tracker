@@ -24,21 +24,23 @@ export const useStyles = createUseStyles({
       fontStyle: "italic"
     }
   },
-  repositoryBannerSearch: {
+  repositoryBannerButton: {
     position: "relative",
-    width: "100%",
-    display: "flex",
-    margin: "4rem auto",
-    justifyContent: "flex-end",
-    height: "3rem",
-    "& input": {
-      padding: "1rem",
-      borderRadius: "1rem",
-      border: "1px solid #ddd",
-      width: "20rem",
-      "&:focus": {
-        outline: "none",
-        border: "2px solid #de5858"
+    "& button": {
+      position: "relative",
+      marginTop: "3rem",
+      right: "0",
+      zIndex: "2",
+      cursor: "pointer",
+      fontSize: "1.2rem",
+      border: "3px solid #de5858",
+      backgroundColor: "white",
+      color: "#de5858",
+      padding: "0.5rem 1rem",
+      transition: "all 0.3s ease",
+      "&:hover": {
+        backgroundColor: "#de5858",
+        color: "white"
       }
     }
   },
@@ -58,7 +60,7 @@ export const useStyles = createUseStyles({
     marginTop: "2rem",
     marginBottom: "4rem",
     padding: "1rem",
-    width: "100%",
+    width: "calc(100% - 2rem)",
     color: "black",
     "& h3": {
       margin: "1rem 0"

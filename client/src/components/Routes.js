@@ -1,19 +1,9 @@
-import Login from "./auth/Login"
-import Register from "./auth/Register"
 import RepositoryDetail from "./repositories/RepositoryDetail"
 import Repositories from "./repositories/Repositories"
+import TrackedUsers from "./tracks/Users"
+import TrackedRepositories from "./tracks/Repositories"
 
 export const Routes = {
-  auth: [
-    {
-      path: "/login",
-      component: Login
-    },
-    {
-      path: "/register",
-      component: Register
-    }
-  ],
   repositories: [
     {
       path: "/repositories/:username",
@@ -22,6 +12,14 @@ export const Routes = {
     {
       path: "/repositories/:username/:repositoryId",
       component: RepositoryDetail
+    },
+    {
+      path: "/tracks/repositories",
+      component: TrackedRepositories
+    },
+    {
+      path: "/tracks/users",
+      component: TrackedUsers
     }
   ]
 }

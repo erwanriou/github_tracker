@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { connect } from "react-redux"
 import classnames from "classnames"
-import Timestamp from "react-timestamp"
 
 // IMPORT ACTIONS
 import { fetchRepository } from "../../store/actions/repositoryActions"
@@ -39,6 +38,10 @@ const RepositoryDetail = ({
     !isEmpty(errors) && setError(errors.message)
   }, [errors])
 
+  const handleSave = () => {
+    console.log("SAVE")
+  }
+
   return (
     <main
       className={classnames(classes.container, classes.repositoryContainer)}
@@ -51,6 +54,9 @@ const RepositoryDetail = ({
             you want to add it to your pokedex?
           </h2>
         </div>
+        <div className={classes.repositoryBannerButton}>
+          <button onClick={handleSave}>Get this pokemon</button>
+        </div>
       </section>
       {loading ? (
         <Loader />
@@ -58,10 +64,12 @@ const RepositoryDetail = ({
         !error && (
           <section className={classes.repositoryData}>
             <div className={classes.repositoryTitle}>
-              <img
-                src={repository.owner.avatar_url}
-                alt={repository.owner.login}
-              />
+              {repository.owner && (
+                <img
+                  src={repository.owner.avatar_url}
+                  alt={repository.owner.login}
+                />
+              )}
               <h1>{repository.full_name}</h1>
             </div>
             <h3>{repository.description}</h3>
@@ -86,7 +94,10 @@ const RepositoryDetail = ({
             {!isEmpty(contributors) && (
               <div className={classes.repositoryContributors}>
                 {contributors.map(contributor => (
-                  <div className={classes.repositoryContributor}>
+                  <div
+                    key={contributor.id}
+                    className={classes.repositoryContributor}
+                  >
                     <img src={contributor.avatar_url} alt={contributor.login} />
                     <div className={classes.repositoryContributorData}>
                       <h3>{contributor.login}</h3>

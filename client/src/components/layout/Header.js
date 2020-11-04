@@ -19,8 +19,8 @@ const Header = () => {
         </NavLink>
         <nav>
           <NavLink to="/">Sneak In</NavLink>
-          <NavLink to="/login">You assumed</NavLink>
-          <NavLink to="/register">Make it private</NavLink>
+          <NavLink to="/tracks/repositories">Pokemons</NavLink>
+          <NavLink to="/tracks/users">Make it private</NavLink>
         </nav>
       </div>
     </header>

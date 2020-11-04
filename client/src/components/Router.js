@@ -10,9 +10,6 @@ const Router = ({ router }) => {
   return (
     <Switch>
       <Route exact path="/" component={Sneakins} />
-      {Routes.auth.map((page, index) => (
-        <Route exact key={index} path={page.path} component={page.component} />
-      ))}
       {Routes.repositories.map((page, index) => (
         <Route exact key={index} path={page.path} component={page.component} />
       ))}
