@@ -1,7 +1,7 @@
 import React from "react"
 
 const Users = () => {
-  return <main>REPOSITORY TRACKED</main>
+  return <main style={{ paddingTop: "4rem" }}>To be Continued...</main>
 }
 
 export default Users

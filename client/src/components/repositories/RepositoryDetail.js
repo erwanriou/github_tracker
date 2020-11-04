@@ -4,6 +4,7 @@ import classnames from "classnames"
 
 // IMPORT ACTIONS
 import { fetchRepository } from "../../store/actions/repositoryActions"
+import { saveRepository } from "../../store/actions/trackActions"
 import { clearErrors } from "../../store/actions/loadingActions"
 
 // IMPORT COMPONENTS
@@ -17,6 +18,8 @@ import { useCommons } from "../../styles/common/common.styles.js"
 // IMPORT STYLES
 const RepositoryDetail = ({
   fetchRepository,
+  saveRepository,
+  history,
   clearErrors,
   repositories: { loading, repository, contributors },
   errors,
@@ -38,8 +41,23 @@ const RepositoryDetail = ({
     !isEmpty(errors) && setError(errors.message)
   }, [errors])
 
+  // TRACK REPOSITORY
   const handleSave = () => {
-    console.log("SAVE")
+    // MANAGE USER DATA
+    const repositoryData = {
+      name: repository.name,
+      id: repository.id,
+      node_id: repository.node_id,
+      url: repository.url,
+      watchers: repository.watchers,
+      description: repository.description,
+      forks: repository.forks,
+      language: repository.language,
+      updated_at: repository.updated_at,
+      created_at: repository.created_at
+    }
+
+    saveRepository(repositoryData, history)
   }
 
   return (
@@ -122,6 +140,8 @@ const mapStateToProps = state => ({
   errors: state.errors
 })
 
-export default connect(mapStateToProps, { fetchRepository, clearErrors })(
-  RepositoryDetail
-)
+export default connect(mapStateToProps, {
+  fetchRepository,
+  saveRepository,
+  clearErrors
+})(RepositoryDetail)

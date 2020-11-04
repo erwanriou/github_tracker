@@ -4,6 +4,7 @@
 
 - [How to deploy in local env](#how-to-deploy-local-env)
 - [Production Deploy](#production-deploy)
+- [API](#API)
 
 ## How to deploy in local env
 
@@ -28,3 +29,11 @@ npm run dev
 ## Production Deploy
 
 I made a quick production deploy in a free heroku instancy just in case. Feel free to visit this adress `https://github-tracker-app.herokuapp.com/`
+
+## API
+
+The 2 endpoint that you can visit to check and retrieve tracked users or repositories are:
+
+`https://github-tracker-app.herokuapp.com/api/users`
+
+`https://github-tracker-app.herokuapp.com/api/repositories`
