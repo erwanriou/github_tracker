@@ -5,18 +5,27 @@ import classnames from "classnames"
 
 // IMPORT ACTIONS
 import { fetchUsers } from "../../store/actions/repositoryActions"
+import { saveUser } from "../../store/actions/trackActions"
 import { clearErrors } from "../../store/actions/loadingActions"
 
 // IMPORT COMPONENTS
 import Logo from "../../utils/images/sneaky.png"
-import SneakinList from "./SneakinList"
+import UserList from "./UserList"
 import isEmpty from "../../utils/isEmpty"
 
 // IMPORT STYLES
 import { useStyles } from "../../styles/sneakin/sneakin.styles.js"
 import { useCommons } from "../../styles/common/common.styles.js"
 
-const SneakIn = ({ fetchUsers, clearErrors, repositories, errors }) => {
+const Users = ({
+  fetchUsers,
+  saveUser,
+  clearErrors,
+  repositories,
+  errors,
+  history
+}) => {
+  // HOOKS
   const classes = { ...useStyles(), ...useCommons() }
   const [query, setQuery] = useState("")
   const [type, setType] = useState({ toggle: false, value: "organizations" })
@@ -32,6 +41,11 @@ const SneakIn = ({ fetchUsers, clearErrors, repositories, errors }) => {
   useEffect(() => {
     !isEmpty(errors) && setError(errors.message)
   }, [errors])
+
+  // TRACK USER
+  const handleSave = userData => {
+    saveUser(userData, history)
+  }
 
   // UI ONCHANGE FUNCTIONS
   const handleChange = async e => {
@@ -80,7 +94,8 @@ const SneakIn = ({ fetchUsers, clearErrors, repositories, errors }) => {
       </p>
       <section className={classes.sneakinList}>
         {!error && (
-          <SneakinList
+          <UserList
+            handleSave={handleSave}
             query={query}
             users={repositories.users}
             loading={repositories.loading}
@@ -103,4 +118,6 @@ const mapStateToProps = state => ({
   errors: state.errors
 })
 
-export default connect(mapStateToProps, { fetchUsers, clearErrors })(SneakIn)
+export default connect(mapStateToProps, { fetchUsers, saveUser, clearErrors })(
+  Users
+)

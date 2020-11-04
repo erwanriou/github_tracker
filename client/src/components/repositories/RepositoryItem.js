@@ -3,11 +3,23 @@ import { Link } from "react-router-dom"
 import Timestamp from "react-timestamp"
 
 // IMPORT STYLES
-const RepositoryItem = ({ repository, classes, url }) => {
-  const handleSave = () => {
-    return console.log("SAVE BUTTON")
-  }
+const RepositoryItem = ({ handleSave, repository, classes, url }) => {
   const renderUrl = `/repositories/${url}/${repository.name}`
+
+  // MANAGE USER DATA
+  const repositoryData = {
+    name: repository.name,
+    id: repository.id,
+    node_id: repository.node_id,
+    url: repository.url,
+    watchers: repository.watchers,
+    description: repository.description,
+    forks: repository.forks,
+    language: repository.language,
+    updated_at: repository.updated_at,
+    created_at: repository.created_at
+  }
+
   return (
     <article className={classes.repositoryItem}>
       <Link to={renderUrl} className={classes.repositoryItemLink}>
@@ -44,7 +56,7 @@ const RepositoryItem = ({ repository, classes, url }) => {
           )}
         </div>
       </Link>
-      <button onClick={handleSave}>Save</button>
+      <button onClick={() => handleSave(repositoryData)}>Save</button>
     </article>
   )
 }

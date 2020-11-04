@@ -7,8 +7,8 @@ const Repo = require("../../models/Repository")
 // DECLARE ROUTER
 const router = express.Router()
 
-// @route  GET api/users
-// @desc   get the list of tracked users
+// @route  GET api/repository
+// @desc   get the list of tracked repo
 // @access Public
 router.get("/", async (req, res) => {
   try {
@@ -19,8 +19,8 @@ router.get("/", async (req, res) => {
   }
 })
 
-// @route  POST api/users
-// @desc   save a user
+// @route  POST api/repository
+// @desc   save a repo
 // @access Public
 router.post("/", async (req, res) => {
   try {

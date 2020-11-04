@@ -9,7 +9,7 @@ import Loader from "../layout/Loader"
 import { useStyles } from "../../styles/repositories/repositoryItem.styles.js"
 
 // IMPORT STYLES
-const RepositoryList = ({ repositories, query, url, loading }) => {
+const RepositoryList = ({ handleSave, repositories, query, url, loading }) => {
   const classes = useStyles()
   const renderList =
     !isEmpty(repositories) &&
@@ -19,6 +19,7 @@ const RepositoryList = ({ repositories, query, url, loading }) => {
       .map(repository => (
         <RepositoryItem
           key={repository.id}
+          handleSave={handleSave}
           repository={repository}
           classes={classes}
           url={url}

@@ -4,6 +4,7 @@ import classnames from "classnames"
 
 // IMPORT ACTIONS
 import { fetchRepositories } from "../../store/actions/repositoryActions"
+import { saveRepository } from "../../store/actions/trackActions"
 import { clearErrors } from "../../store/actions/loadingActions"
 
 // IMPORT STYLES
@@ -17,9 +18,11 @@ import RepositoryList from "./RepositoryList"
 // IMPORT STYLES
 const Repositories = ({
   fetchRepositories,
+  saveRepository,
   clearErrors,
   repositories,
   errors,
+  history,
   match: {
     params: { username }
   }
@@ -41,6 +44,11 @@ const Repositories = ({
   useEffect(() => {
     !isEmpty(errors) && setError(errors.message)
   }, [errors])
+
+  // TRACK REPOSITORY
+  const handleSave = repositoryData => {
+    saveRepository(repositoryData, history)
+  }
 
   // UI ONCHANGE FUNCTIONS
   const handleChange = async e => {
@@ -74,6 +82,7 @@ const Repositories = ({
       <section className={classes.repositoriesList}>
         {!error && (
           <RepositoryList
+            handleSave={handleSave}
             query={query}
             repositories={repositories.repositories}
             loading={repositories.loading}
@@ -98,6 +107,8 @@ const mapStateToProps = state => ({
   errors: state.errors
 })
 
-export default connect(mapStateToProps, { fetchRepositories, clearErrors })(
-  Repositories
-)
+export default connect(mapStateToProps, {
+  fetchRepositories,
+  saveRepository,
+  clearErrors
+})(Repositories)
