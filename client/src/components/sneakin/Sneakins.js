@@ -4,7 +4,7 @@ import Switch from "react-switch"
 import classnames from "classnames"
 
 // IMPORT ACTIONS
-import { fetchRepositories } from "../../store/actions/repositoryActions"
+import { fetchUsers } from "../../store/actions/repositoryActions"
 import { clearErrors } from "../../store/actions/loadingActions"
 
 // IMPORT COMPONENTS
@@ -16,7 +16,7 @@ import isEmpty from "../../utils/isEmpty"
 import { useStyles } from "../../styles/sneakin/sneakin.styles.js"
 import { useCommons } from "../../styles/common/common.styles.js"
 
-const SneakIn = ({ fetchRepositories, clearErrors, repositories, errors }) => {
+const SneakIn = ({ fetchUsers, clearErrors, repositories, errors }) => {
   const classes = { ...useStyles(), ...useCommons() }
   const [query, setQuery] = useState("")
   const [type, setType] = useState({ toggle: false, value: "organizations" })
@@ -25,8 +25,8 @@ const SneakIn = ({ fetchRepositories, clearErrors, repositories, errors }) => {
 
   // HANDLE API FETCH
   useEffect(() => {
-    fetchRepositories(type.value, page)
-  }, [fetchRepositories, type, page])
+    fetchUsers(type.value, page)
+  }, [fetchUsers, type, page])
 
   // HANDLE ERROR MANAGEMENT
   useEffect(() => {
@@ -82,16 +82,17 @@ const SneakIn = ({ fetchRepositories, clearErrors, repositories, errors }) => {
         {!error && (
           <SneakinList
             query={query}
-            repositories={repositories.repositories}
+            users={repositories.users}
+            loading={repositories.loading}
             type={type.value}
           />
         )}
       </section>
       <section className={classes.sneakinPager}>
         {page > 0 && (
-          <button onClick={() => handlePage(-100)}>Previous Page</button>
+          <button onClick={() => handlePage(-50)}>Previous Page</button>
         )}
-        <button onClick={() => handlePage(100)}>Next Page</button>
+        <button onClick={() => handlePage(50)}>Next Page</button>
       </section>
     </main>
   )
@@ -102,6 +103,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 })
 
-export default connect(mapStateToProps, { fetchRepositories, clearErrors })(
-  SneakIn
-)
+export default connect(mapStateToProps, { fetchUsers, clearErrors })(SneakIn)

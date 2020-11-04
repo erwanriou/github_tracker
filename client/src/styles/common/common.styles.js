@@ -12,5 +12,13 @@ export const useCommons = createUseStyles({
     color: "#de5858",
     fontWeight: "400",
     textAlign: "center"
+  },
+  spinner: {
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+    "& img": {
+      width: "3rem"
+    }
   }
 })

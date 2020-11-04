@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 // IMPORT STYLES
-const RepositoryItem = ({ repository, type, classes }) => {
+const RepositoryItem = ({ user, type, classes }) => {
   const handleSave = () => {
     return console.log("SAVE BUTTON")
   }
@@ -10,15 +10,15 @@ const RepositoryItem = ({ repository, type, classes }) => {
   return (
     <article className={classes.repositoryItem}>
       <Link
-        to={`/repositories/${repository.login}`}
+        to={`/repositories/${user.login}`}
         className={classes.repositoryItemLink}
       >
-        <img src={repository.avatar_url} alt={repository.name} />
+        <img src={user.avatar_url} alt={user.name} />
         <div className={classes.repositoryItemData}>
           <h3>
-            <strong>{repository.login}</strong>
+            <strong>{user.login}</strong>
           </h3>
-          {repository.description && <p>{repository.description}</p>}
+          {user.description && <p>{user.description}</p>}
         </div>
       </Link>
       <button onClick={handleSave}>Save {typeSaved}</button>

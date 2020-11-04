@@ -3,26 +3,22 @@ import React from "react"
 // IMPORT COMPONENTS
 import SneakinItem from "./SneakinItem"
 import isEmpty from "../../utils/isEmpty"
+import Loader from "../layout/Loader"
 
 // IMPORT STYLES
 import { useStyles } from "../../styles/sneakin/sneakinItem.styles.js"
 
 // IMPORT STYLES
-const SneakinList = ({ repositories, type, query }) => {
+const SneakinList = ({ users, type, query, loading }) => {
   const classes = useStyles()
   const renderList =
-    !isEmpty(repositories) &&
-    repositories
-      .filter(repository => repository.login.includes(query))
-      .map(repository => (
-        <SneakinItem
-          key={repository.id}
-          repository={repository}
-          type={type}
-          classes={classes}
-        />
+    !isEmpty(users) &&
+    users
+      .filter(user => user.login.includes(query))
+      .map(user => (
+        <SneakinItem key={user.id} user={user} type={type} classes={classes} />
       ))
-  return renderList
+  return loading ? <Loader /> : renderList
 }
 
 export default SneakinList

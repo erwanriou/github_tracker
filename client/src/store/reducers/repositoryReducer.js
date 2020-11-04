@@ -1,10 +1,12 @@
 import {
+  FETCH_USERS,
   FETCH_REPOSITORIES,
   LOADING_DATA,
   CLEAR_LOADING_DATA
 } from "../actions/types"
 
 const initialState = {
+  users: [],
   repositories: [],
   repository: {},
   total: 0,
@@ -17,6 +19,12 @@ export default function repositoryReducer(state = initialState, action) {
       return {
         ...state,
         loading: true
+      }
+    case FETCH_USERS:
+      return {
+        ...state,
+        users: action.payload,
+        loading: false
       }
     case FETCH_REPOSITORIES:
       return {
