@@ -5,24 +5,34 @@ import classnames from "classnames"
 
 // IMPORT ACTIONS
 import { fetchRepositories } from "../../store/actions/repositoryActions"
+import { clearErrors } from "../../store/actions/loadingActions"
 
 // IMPORT COMPONENTS
 import Logo from "../../utils/images/sneaky.png"
 import RepositoriesList from "./RepositoriesList"
+import isEmpty from "../../utils/isEmpty"
 
 // IMPORT STYLES
 import { useStyles } from "../../styles/repositories/sneakin.styles.js"
 import { useCommons } from "../../styles/common/common.styles.js"
 
-const SneakIn = ({ fetchRepositories, repositories }) => {
+const SneakIn = ({ fetchRepositories, clearErrors, repositories, errors }) => {
   const classes = { ...useStyles(), ...useCommons() }
   const [query, setQuery] = useState("")
   const [type, setType] = useState({ toggle: false, value: "organizations" })
+  const [error, setError] = useState("")
 
+  // HANDLE API FETCH
   useEffect(() => {
-    fetchRepositories(type)
+    fetchRepositories(type.value)
   }, [fetchRepositories, type])
 
+  // HANDLE ERROR MANAGEMENT
+  useEffect(() => {
+    !isEmpty(errors) && setError(errors.message)
+  }, [errors])
+
+  // UI ONCHANGE FUNCTIONS
   const handleChange = async e => {
     setQuery(e.target.value)
   }
@@ -60,15 +70,27 @@ const SneakIn = ({ fetchRepositories, repositories }) => {
           placeholder="find content as dirty as PHP! (adult only)"
         />
       </section>
+      <p className={classes.errors}>
+        {error &&
+          "Error 403, someone finally take some action regarding your creepyness! Shame on you!"}
+      </p>
       <section className={classes.sneakinList}>
-        <RepositoriesList repositories={repositories} />
+        {!error && (
+          <RepositoriesList
+            repositories={repositories.repositories}
+            type={type.value}
+          />
+        )}
       </section>
     </main>
   )
 }
 
 const mapStateToProps = state => ({
-  repositories: state.repositories
+  repositories: state.repositories,
+  errors: state.errors
 })
 
-export default connect(mapStateToProps, { fetchRepositories })(SneakIn)
+export default connect(mapStateToProps, { fetchRepositories, clearErrors })(
+  SneakIn
+)

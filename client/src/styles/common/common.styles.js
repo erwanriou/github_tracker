@@ -7,5 +7,10 @@ export const useCommons = createUseStyles({
     "@media (max-width: 1500px)": {
       padding: "0 1.5rem"
     }
+  },
+  errors: {
+    color: "#de5858",
+    fontWeight: "400",
+    textAlign: "center"
   }
 })

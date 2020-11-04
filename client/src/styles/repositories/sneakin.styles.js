@@ -55,6 +55,7 @@ export const useStyles = createUseStyles({
     textAlign: "center",
     marginBottom: "1rem",
     "& p": {
+      fontSize: "0.9rem",
       marginRight: "1rem"
     }
   },

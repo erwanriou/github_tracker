@@ -1,4 +1,9 @@
-import { LOADING_DATA, LOADING_AUTH_DATA, CLEAR_LOADING_DATA } from "./types"
+import {
+  LOADING_DATA,
+  LOADING_AUTH_DATA,
+  CLEAR_LOADING_DATA,
+  CLEAR_ERRORS
+} from "./types"
 
 export const loading = () => {
   return {
@@ -15,5 +20,11 @@ export const authLoading = () => {
 export const clearLoading = () => {
   return {
     type: CLEAR_LOADING_DATA
+  }
+}
+
+export const clearErrors = () => {
+  return {
+    type: CLEAR_ERRORS
   }
 }
