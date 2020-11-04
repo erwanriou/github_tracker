@@ -3,11 +3,13 @@ import axios from "axios"
 import { FETCH_REPOSITORIES, GET_ERRORS } from "./types"
 import { loading, clearLoading } from "./loadingActions"
 
-export const fetchRepositories = type => async dispatch => {
+export const fetchRepositories = (type, page) => async dispatch => {
   dispatch(loading())
   try {
     // CALL REQUEST
-    const res = await axios.get(`https://api.github.com/${type}`)
+    const res = await axios.get(
+      `https://api.github.com/${type}?since=${page}&per_page=100`
+    )
 
     dispatch({
       type: FETCH_REPOSITORIES,

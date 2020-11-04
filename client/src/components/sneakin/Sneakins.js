@@ -21,11 +21,12 @@ const SneakIn = ({ fetchRepositories, clearErrors, repositories, errors }) => {
   const [query, setQuery] = useState("")
   const [type, setType] = useState({ toggle: false, value: "organizations" })
   const [error, setError] = useState("")
+  const [page, setPage] = useState(0)
 
   // HANDLE API FETCH
   useEffect(() => {
-    fetchRepositories(type.value)
-  }, [fetchRepositories, type])
+    fetchRepositories(type.value, page)
+  }, [fetchRepositories, type, page])
 
   // HANDLE ERROR MANAGEMENT
   useEffect(() => {
@@ -40,6 +41,9 @@ const SneakIn = ({ fetchRepositories, clearErrors, repositories, errors }) => {
     return type.value === "organizations"
       ? setType({ toggle: true, value: "users" })
       : setType({ toggle: false, value: "organizations" })
+  }
+  const handlePage = pageNumber => {
+    setPage(page + pageNumber)
   }
   return (
     <main className={classnames(classes.container, classes.sneakinContainer)}>
@@ -82,6 +86,12 @@ const SneakIn = ({ fetchRepositories, clearErrors, repositories, errors }) => {
             type={type.value}
           />
         )}
+      </section>
+      <section className={classes.sneakinPager}>
+        {page > 0 && (
+          <button onClick={() => handlePage(-100)}>Previous Page</button>
+        )}
+        <button onClick={() => handlePage(100)}>Next Page</button>
       </section>
     </main>
   )

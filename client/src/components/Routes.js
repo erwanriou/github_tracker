@@ -16,11 +16,11 @@ export const Routes = {
   ],
   repositories: [
     {
-      path: "/repositories",
+      path: "/repositories/:username",
       component: Repositories
     },
     {
-      path: "/repositories/:id",
+      path: "/repositories/:username/:repositoryId",
       component: RepositoryDetail
     }
   ]

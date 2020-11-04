@@ -3,13 +3,13 @@ import { Route, Switch } from "react-router"
 
 // IMPORT ROUTES
 import { Routes } from "./Routes"
-import Sneakin from "./sneakin/Sneakin"
+import Sneakins from "./sneakin/Sneakins"
 import NotFound from "./layout/NotFound"
 
 const Router = ({ router }) => {
   return (
     <Switch>
-      <Route exact path="/" component={Sneakin} />
+      <Route exact path="/" component={Sneakins} />
       {Routes.auth.map((page, index) => (
         <Route exact key={index} path={page.path} component={page.component} />
       ))}
