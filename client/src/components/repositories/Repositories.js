@@ -71,7 +71,7 @@ const Repositories = ({
           />
         </div>
       </section>
-      <section className={classes.sneakinList}>
+      <section className={classes.repositoriesList}>
         {!error && (
           <RepositoryList
             query={query}
@@ -80,11 +80,13 @@ const Repositories = ({
           />
         )}
       </section>
-      <section className={classes.sneakinPager}>
+      <section className={classes.repositoriesPager}>
         {page > 0 && (
-          <button onClick={() => handlePage(-50)}>Previous Page</button>
+          <button onClick={() => handlePage(-1)}>Previous Page</button>
         )}
-        <button onClick={() => handlePage(50)}>Next Page</button>
+        {repositories.repositories.length === 50 && (
+          <button onClick={() => handlePage(1)}>Next Page</button>
+        )}
       </section>
     </main>
   )

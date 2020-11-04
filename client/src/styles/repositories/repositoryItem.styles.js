@@ -9,12 +9,9 @@ export const useStyles = createUseStyles({
     marginBottom: "1rem",
     padding: "1rem",
     width: "calc(33% - (2px + 3rem))",
+    height: "10rem",
     color: "black",
     transition: "all 0.3s ease",
-    "& img": {
-      width: "5rem",
-      borderRadius: "100%"
-    },
     "& button": {
       position: "absolute",
       right: "1rem",
@@ -37,14 +34,32 @@ export const useStyles = createUseStyles({
     }
   },
   repositoryItemLink: {
-    display: "flex",
     color: "black"
   },
-  repositorytemData: {
+  repositoryItemData: {
     position: "relative",
     width: "100%",
     right: 0,
-    textAlign: "right",
-    marginLeft: "1rem"
+    "& h3": {
+      marginBottom: "1rem"
+    }
+  },
+  repositoryItemMetadata: {
+    display: "flex",
+    flexWrap: "wrap",
+    marginTop: "1rem"
+  },
+  repositoryMetadata: {
+    display: "flex",
+    justifyContent: "center",
+    marginRight: "0.5rem",
+    marginBottom: "0.5rem",
+    borderRadius: "1rem",
+    padding: "0.3rem 1rem",
+    backgroundColor: "#de5858",
+    color: "white"
+  },
+  repositoryDate: {
+    marginLeft: "0.5rem"
   }
 })

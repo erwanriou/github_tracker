@@ -14,6 +14,7 @@ const RepositoryList = ({ repositories, query, loading }) => {
   const renderList =
     !isEmpty(repositories) &&
     repositories
+      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
       .filter(repository => repository.name.includes(query))
       .map(repository => (
         <RepositoryItem
