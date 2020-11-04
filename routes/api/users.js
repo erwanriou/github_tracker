@@ -2,7 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 
 // IMPORT MODELS
-const Repo = require("../../models/Repository")
+const User = require("../../models/User")
 
 // DECLARE ROUTER
 const router = express.Router()
@@ -12,8 +12,8 @@ const router = express.Router()
 // @access Public
 router.get("/", async (req, res) => {
   try {
-    const repo = await Repo.find()
-    res.send(repo)
+    const users = await User.find()
+    res.send(users)
   } catch (e) {
     console.error(e)
   }
@@ -24,34 +24,19 @@ router.get("/", async (req, res) => {
 // @access Public
 router.post("/", async (req, res) => {
   try {
-    const {
-      name,
-      id,
-      node_id,
-      url,
-      description,
-      watchers,
-      forks,
-      language,
-      updated_at,
-      created_at
-    } = req.body
+    const { login, id, node_id, repos_url, avatar_url, description } = req.body
 
-    const repo = new Repo({
-      name,
+    const user = new User({
+      login,
       id,
       node_id,
-      url,
-      description,
-      watchers,
-      forks,
-      language,
-      updated_at,
-      created_at
+      repos_url,
+      avatar_url,
+      description
     })
-    await repo.save()
+    await user.save()
 
-    res.send(repo)
+    res.send(user)
   } catch (e) {
     console.error(e)
   }
